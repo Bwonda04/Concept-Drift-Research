@@ -85,3 +85,17 @@ class SlidingWindow:
         if new_size < len(self.X):
             self.X = self.X[-new_size:]
             self.y = self.y[-new_size:]
+
+    def get_from_index(self, index):
+        """
+        Return window data from a specific index onward.
+        Used when drift is detected — keeps data from warning point.
+
+        Parameters:
+        - index (int): position to slice from
+
+        Returns:
+        - X: list of feature vectors from index onward
+        - y: list of labels from index onward
+        """
+        return self.X[index:], self.y[index:]
